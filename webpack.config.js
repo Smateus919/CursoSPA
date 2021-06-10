@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { resolve } = require('path')
 const { mainModule } = require('process')
 
@@ -28,6 +29,10 @@ module.exports = {
             inject: true,
             template: './public/index.html',
             filename: './index.html'
-        })
+        }),
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, "src", "style"),
+            to: ""
+        }])
     ]
 }
